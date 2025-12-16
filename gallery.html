@@ -1,0 +1,60 @@
+
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Liberty County RP – Galerie</title>
+  <style>
+    body{font-family:Segoe UI,Arial,Helvetica,sans-serif;margin:0;padding:0;background:#f7f9fc;color:#121212}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    h1{margin-top:0}
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-top:24px}
+    .thumb{width:100%;border-radius:10px;box-shadow:0 2px 8px #0001;object-fit:cover}
+    a.back{display:inline-block;margin:18px 0 0 0;padding:8px 18px;background:#0b74d1;color:#fff;text-decoration:none;border-radius:8px;font-weight:600}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Galerie – Liberty County RP</h1>
+    <div class="gallery-grid">
+      <img class="thumb" src="https://media.discordapp.net/attachments/1403401007097974784/1450182656984612896/Screenshot_2025-12-15_184730.png?ex=69424418&is=6940f298&hm=bbcbb51ea034a2bfc9b402eba5e45a78c45b7df04da9009b036f33e476f26627&=&format=webp&quality=lossless&width=1340&height=856" alt="Das RCFR" title="Das RCFR">
+      <img class="thumb" src="https://media.discordapp.net/attachments/1403401007097974784/1450181241226793112/Screenshot_2025-12-15_184223.png?ex=694242c6&is=6940f146&hm=033d8b9f8e8792f0efc1d226cdfc9f7e5c11f7fd7f37847fdc323c39c158191d&=&format=webp&quality=lossless&width=1429&height=856" alt="Ausrücken des Löschzuges" title="Ausrücken des Löschzuges">
+      <img class="thumb" src="https://media.discordapp.net/attachments/1403401007097974784/1450178939258671146/Screenshot_2025-12-15_183125.png?ex=694240a2&is=6940ef22&hm=5fb3e01c1cf00bce7774fe277273d5d7601a3925d3040c0e519f6995d45e71fd&=&format=webp&quality=lossless" alt="Feuerwehreinsatz in River City" title="Feuerwehreinsatz in River City">
+      <img class="thumb" src="https://media.discordapp.net/attachments/1403401007097974784/1450226532411768862/Screenshot_2025-12-15_213228.png?ex=69426cf5&is=69411b75&hm=814d4ca3735dbffc6275c78780c421875bf9c197ace4e041f4fc06acbea39459&=&format=webp&quality=lossless" alt="Ambulance einsatz bei nacht" title="Ambulance einsatz bei nacht">
+      <img class="thumb" src="https://media.discordapp.net/attachments/1403401007097974784/1450557332802240552/Screenshot_2025-12-16_141259.png?ex=6942f84a&is=6941a6ca&hm=ab99d4d9e77c41e1f6e407ddb947f8ad8db3c017bd6151091ab0450b65395967&=&format=webp&quality=lossless" alt="Park Ranger" title="Park Ranger">
+      <img class="thumb" src="https://media.discordapp.net/attachments/1403401007097974784/1450177246038986942/Screenshot_2025-12-15_182450.png?ex=69423f0e&is=6940ed8e&hm=4f2c1197e665bf4d28400330a624a4b98cb6f5040f7d9137dd7d949c3b014c0b&=&format=webp&quality=lossless" alt="Brand im Gunstore" title="Brand im Gunstore">
+    </div>
+    <a class="back" href="index.html">Zurück zur Hauptseite</a>
+  </div>
+
+  <script>
+  // Einfaches Modal für Galerie-Bilder
+  (function(){
+    const thumbs = document.querySelectorAll('.thumb');
+    if(!thumbs.length) return;
+    const modal = document.createElement('div');
+    modal.style.cssText = 'position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:9999;padding:20px;';
+    modal.style.display = 'none';
+    const img = document.createElement('img');
+    img.style.maxWidth = '96vw';
+    img.style.maxHeight = '92vh';
+    img.style.borderRadius = '12px';
+    img.style.boxShadow = '0 8px 32px #0006';
+    modal.appendChild(img);
+    modal.addEventListener('click',()=>{
+      modal.style.display = 'none';
+      img.src = '';
+    });
+    document.body.appendChild(modal);
+    thumbs.forEach(t=>{
+      t.style.cursor = 'zoom-in';
+      t.addEventListener('click',()=>{
+        img.src = t.src;
+        modal.style.display = 'flex';
+      });
+    });
+  })();
+  </script>
+  </body>
+  </html>
