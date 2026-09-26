@@ -9,74 +9,15 @@
     body{font-family:Segoe UI,Arial,Helvetica,sans-serif;margin:0;padding:0;background:#f7f9fc;color:#121212}
     .container{max-width:1100px;margin:0 auto;padding:24px}
     h1{margin-top:0}
-    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-top:24px}
-    .thumb{width:100%;border-radius:10px;box-shadow:0 2px 8px #0001;object-fit:cover}
+    .message-box{margin-top:24px;padding:32px 24px;border-radius:12px;background:#fff;border:1px solid #dfe7f3;text-align:center;font-size:1.2rem;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
     a.back{display:inline-block;margin:18px 0 0 0;padding:8px 18px;background:#0b74d1;color:#fff;text-decoration:none;border-radius:8px;font-weight:600}
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Galerie – Liberty County RP</h1>
-    <div class="gallery-grid">
-      <img class="thumb" src="Bilder_Website/Das RCFR.png" alt="Das RCFR" title="Das RCFR">
-      <img class="thumb" src="Bilder_Website/Ausrücken.png" alt="Ausrücken des Löschzuges" title="Ausrücken des Löschzuges">
-      <img class="thumb" src="Bilder_Website/Hausbrand.png" alt="Feuerwehreinsatz in River City" title="Feuerwehreinsatz in River City">
-      <img class="thumb" src="Bilder_Website/Ambulance Nacht.png" alt="Ambulance einsatz bei nacht" title="Ambulance einsatz bei nacht">
-      <img class="thumb" src="Bilder_Website/Park Ranger.png" alt="Park Ranger" title="Park Ranger">
-      <img class="thumb" src="Bilder_Website/Gun Store außen.png" alt="Brand im Gunstore" title="Brand im Gunstore">
-      <img class="thumb" src="Bilder_Website/GunStore innen.png" alt="Brand im Gunstore innen" title="Brand im Gunstore innen">
-      <img class="thumb" src="Bilder_Website/Fire Unfall 1.png" alt="Verkersunfall" title="Verkehrsunfall">
-      <img class="thumb" src="Bilder_Website/Fire Unfall 2.png" alt="Verkersunfall 2" title="Verkersunfall 2">
-      <img class="thumb" src="Bilder_Website/LCMR 1.png" alt="Ablieferung eines Patienten" title="Ablieferung eines Patienten">
-      <img class="thumb" src="Bilder_Website/LCMR 2.png" alt="Das LCMR" title="Das LCMR">
-      <img class="thumb" src="Bilder_Website/RCPD Charger Whitebody.png" alt="RCPD Charger" title="RCPD Charger">
-      <img class="thumb" src="Bilder_Website/RCPD Crime Scene.png" alt="Crime Scene Investigation" title="Crime Scene Investigation">
-      <img class="thumb" src="Bilder_Website/Sheriff 1.png" alt="Sheriff 1" title="Sheriff 1">
-      <img class="thumb" src="Bilder_Website/Sheriff Traffic Stop.png" alt="Sheriff Traffic Stop" title="Sheriff Traffic Stop">
-      <img class="thumb" src="Bilder_Website/Park Ranger 2.png" alt="Park Ranger 2" title="Park Ranger 2">
-      <img class="thumb" src="Bilder_Website/Park Ranger 3.png" alt="Park Ranger 3" title="Park Ranger 3">
-      <img class="thumb" src="Bilder_Website/Park Ranger FD.png" alt="Park Ranger und Fire Department" title="Park Ranger und Fire Department">
-      <img class="thumb" src="Bilder_Website/Polizei Verfolgung 2.png" alt="Polizeiverfolgung" title="Polizeiverfolgung">
-      <img class="thumb" src="Bilder_Website/Polizei Verfolgung.png" alt="Polizeiverfolgung 2" title="Polizeiverfolgung 2">
-      <img class="thumb" src="Bilder_Website/Fire Unfall 3.png" alt="Verkersunfall 3" title="Verkersunfall 3">
-      <img class="thumb" src="Bilder_Website/Fire Unfall 4.png" alt="Verkersunfall 4" title="Verkersunfall 4"> 
-      <img class="thumb" src="Bilder_Website/Northstar 1.png" alt="Northstar 1" title="Northstar 1"> 
-      <img class="thumb" src="Bilder_Website/Northstar 2.png" alt="Northstar 2" title="Northstar 2">
-      <img class="thumb" src="Bilder_Website/Northstar 3.png" alt="Northstar 3" title="Northstar 3">
-      <img class="thumb" src="Bilder_Website/Northstar 4.png" alt="Northstar 4" title="Northstar 4">
-      <img class="thumb" src="Bilder_Website/Northstar 5.png" alt="Northstar 5" title="Northstar 5">
-      <img class="thumb" src="Bilder_Website/Northstar 6.png" alt="Northstar 6" title="Northstar 6">   
-    </div>
+    <div class="message-box">Under Construction, weiter Bilder folgen bald</div>
     <a class="back" href="index.html">Zurück zur Hauptseite</a>
   </div>
-
-  <script>
-  // Einfaches Modal für Galerie-Bilder
-  (function(){
-    const thumbs = document.querySelectorAll('.thumb');
-    if(!thumbs.length) return;
-    const modal = document.createElement('div');
-    modal.style.cssText = 'position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:9999;padding:20px;';
-    modal.style.display = 'none';
-    const img = document.createElement('img');
-    img.style.maxWidth = '96vw';
-    img.style.maxHeight = '92vh';
-    img.style.borderRadius = '12px';
-    img.style.boxShadow = '0 8px 32px #0006';
-    modal.appendChild(img);
-    modal.addEventListener('click',()=>{
-      modal.style.display = 'none';
-      img.src = '';
-    });
-    document.body.appendChild(modal);
-    thumbs.forEach(t=>{
-      t.style.cursor = 'zoom-in';
-      t.addEventListener('click',()=>{
-        img.src = t.src;
-        modal.style.display = 'flex';
-      });
-    });
-  })();
-  </script>
-  </body>
-  </html>
+</body>
+</html>
