@@ -311,6 +311,7 @@
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_next" value="https://lcrpd.github.io/contact.html?success=1" />
+          <input type="hidden" name="_autoresponse" value="Vielen Dank für deine Nachricht. Wir haben deine Anfrage erhalten und melden uns in Kürze bei dir. Mit freundlichen Grüßen, das LCRPD Staff Team" />
 
           <div>
             <label for="name">Name</label>
@@ -376,7 +377,7 @@
     }
 
     if (new URLSearchParams(window.location.search).get('success') === '1') {
-      showStatus('Deine Nachricht wurde erfolgreich gesendet. Wir melden uns bald bei dir.', false);
+      showStatus('Vielen Dank! Wir haben deine Nachricht erhalten und melden uns in Kürze bei dir. Mit freundlichen Grüßen, das LCRPD Staff Team', false);
     }
 
     form.addEventListener('submit', function (event) {
