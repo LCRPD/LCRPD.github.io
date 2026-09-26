@@ -23,16 +23,25 @@
     html, body, img, .thumb { filter: none !important; -webkit-filter: none !important; }
     *{box-sizing:border-box}
     html,body{height:100%}
+    html { scroll-behavior: smooth; }
     body{
       margin:0;
-      background:var(--bg);
+      background:linear-gradient(180deg,#f8fbff 0%,#eef5ff 40%,#ffffff 100%);
       color:var(--text);
       line-height:1.45;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
     }
     .container{max-width:1100px;margin:0 auto;padding:24px}
-    header{background:transparent;padding:12px 0}
+    header{
+      background:rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
+      position:sticky;
+      top:0;
+      z-index:20;
+      border-bottom:1px solid rgba(11,116,209,0.08);
+      padding:12px 0;
+    }
     .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .brand{display:flex;align-items:center;gap:12px}
     .brand img{width:48px;height:48px;border-radius:8px;object-fit:cover;border:1px solid var(--border);background:transparent}
@@ -57,8 +66,38 @@
       border-radius:10px;
       border:1px solid var(--border);
       box-shadow:var(--shadow);
+      transition:transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(11,17,21,0.08);
+      border-color: rgba(11,116,209,0.2);
     }
     .small{font-size:0.9rem;color:var(--muted)}
+    .scroll-reveal {
+      opacity:0;
+      transform:translateY(18px);
+      transition:opacity 0.7s ease, transform 0.7s ease;
+    }
+    .scroll-reveal.visible {
+      opacity:1;
+      transform:translateY(0);
+    }
+    .btn {
+      position:relative;
+      overflow:hidden;
+    }
+    .btn::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg,transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+      transform:translateX(-120%);
+      transition:transform 0.7s ease;
+    }
+    .btn:hover::after {
+      transform:translateX(120%);
+    }
     #gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -210,7 +249,7 @@
     <section id="gallery" class="card" style="margin-top:20px">
       <h2>Galerie</h2>
       <p class="small">Bilder folgen in Kürze</p>
-      <p class="small"><a href="gallery.html">Zur Galerie</a></p>
+      <a class="btn" href="gallery.html" style="display:inline-block;margin-top:8px;">Zur Galerie</a>
     </section>
 
     <!-- Fraktionen -->
@@ -258,30 +297,30 @@
   </footer>
 
   <script>
-    // Einfaches Modal für Galerie (keine externen Bibliotheken)
-    (function(){
-      const thumbs = document.querySelectorAll('.thumb');
-      if(!thumbs.length) return;
-      const modal = document.createElement('div');
-      // Modal erzeugen, standardmäßig ausgeblendet und ohne dunkles Overlay
-      modal.style.cssText = 'position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0);z-index:999;padding:20px;';
-      modal.style.display = 'none'; // sicherstellen, dass es nicht sichtbar ist
-      const img = document.createElement('img');
-      img.style.maxWidth='100%';img.style.maxHeight='100%';img.style.borderRadius='8px';
-      modal.appendChild(img);
-      // Klick schließt das Modal
-      modal.addEventListener('click',()=>{
-        modal.style.display = 'none';
-        img.src = '';
-      });
-      document.body.appendChild(modal);
-      thumbs.forEach(t=>{
-        t.addEventListener('click',()=>{
-          const full = t.dataset.full || t.src;
-          img.src = full;
-          // Modal sichtbar machen (ohne dunklen Filter)
-          modal.style.display = 'flex';
+    (function () {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
         });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.card, .btn, section, h2, h3, h4').forEach((element) => {
+        if (!element.classList.contains('btn') && !element.classList.contains('card')) {
+          element.classList.add('scroll-reveal');
+        }
+        observer.observe(element);
+      });
+
+      document.querySelectorAll('.card').forEach((card) => {
+        card.classList.add('scroll-reveal');
+        observer.observe(card);
+      });
+
+      document.querySelectorAll('.btn').forEach((button) => {
+        button.classList.add('scroll-reveal');
+        observer.observe(button);
       });
     })();
   </script>
