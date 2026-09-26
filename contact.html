@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kontakt | Liberty County RP</title>
+  <meta name="description" content="Kontakt aufnehmen mit Liberty County RP – Fragen, Anregungen, Support oder Beitritt." />
+  <style>
+    :root{
+      --bg: #0b1220;
+      --bg-soft: #111b2d;
+      --panel: rgba(16,24,39,0.88);
+      --text: #eaf3ff;
+      --muted: #b9c8dc;
+      --card-bg: rgba(13, 22, 36, 0.9);
+      --border: rgba(148, 163, 184, 0.2);
+      --accent: #45a5ff;
+      --accent-strong: #0b74d1;
+      --btn-bg: linear-gradient(135deg, #2f8dff, #0b74d1);
+      --btn-color: #ffffff;
+      --shadow: 0 18px 42px rgba(1, 6, 16, 0.38);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 110px;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(69,165,255,0.18), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(16,185,129,0.12), transparent 22%),
+        linear-gradient(180deg, #09111d 0%, #0d1727 35%, #0c1523 100%);
+      color: var(--text);
+      font-family: Inter, Segoe UI, system-ui, sans-serif;
+      line-height: 1.5;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      background: rgba(8, 14, 23, 0.84);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(148,163,184,0.16);
+      padding: 12px 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      background: transparent;
+      box-shadow: 0 8px 18px rgba(12,22,35,0.45);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 12px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav a {
+      color: #eaf3ff;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    nav a:hover {
+      background: rgba(69,165,255,0.12);
+      box-shadow: inset 0 0 0 1px rgba(69,165,255,0.2);
+    }
+
+    main.container { padding-top: 120px; }
+
+    .hero-card,
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 26px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, rgba(17,29,46,0.95), rgba(10,18,29,0.82));
+    }
+
+    .hero-tag {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(69,165,255,0.12);
+      border: 1px solid rgba(69,165,255,0.22);
+      color: #8fd0ff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 650px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+    }
+
+    .card {
+      padding: 20px;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.5rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(148,163,184,0.25);
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      border: none;
+      background: var(--btn-bg);
+      color: var(--btn-color);
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(11,116,209,0.35);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 30px rgba(11,116,209,0.42);
+    }
+
+    .contact-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 16px;
+    }
+
+    .contact-list li {
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: rgba(148,163,184,0.04);
+      border: 1px solid rgba(148,163,184,0.08);
+    }
+
+    .contact-list strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    footer {
+      padding: 20px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+      margin-top: 20px;
+    }
+
+    @media (max-width: 860px) {
+      .content-grid { grid-template-columns: 1fr; }
+      nav ul { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="container" role="banner">
+    <div class="nav" role="navigation" aria-label="Hauptnavigation">
+      <div class="brand">
+        <img src="Bilder_Website/ChatGPT_Image_26._Nov._2025_18_53_34.png" alt="Liberty County RP Logo" />
+        <div>
+          <strong>Liberty County RP</strong>
+          <div class="muted" style="font-size:0.8rem;">ERLC | Only German</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Start</a></li>
+          <li><a href="gallery.html">Galerie</a></li>
+          <li><a href="contact.html">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero-card">
+      <div class="hero-tag">Kontakt</div>
+      <h1>Du hast Fragen oder Anregungen?</h1>
+      <p class="lead">Kontaktiere uns gerne per E-Mail oder nutze das kurze Formular. Wir freuen uns über Feedback, Vorschläge und neue Mitglieder.</p>
+    </section>
+
+    <section class="content-grid">
+      <div class="card">
+        <h2>Kontaktformular</h2>
+        <form id="contactForm" class="form-grid">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Dein Name" required />
+          </div>
+
+          <div>
+            <label for="email">E-Mail</label>
+            <input id="email" name="email" type="email" placeholder="deine@email.de" required />
+          </div>
+
+          <div>
+            <label for="subject">Betreff</label>
+            <input id="subject" name="subject" type="text" placeholder="Worum geht es?" required />
+          </div>
+
+          <div>
+            <label for="message">Nachricht</label>
+            <textarea id="message" name="message" placeholder="Schreib uns deine Frage oder Anregung..." required></textarea>
+          </div>
+
+          <button class="btn" type="submit">Nachricht senden</button>
+        </form>
+      </div>
+
+      <aside class="card">
+        <h2>Direkt erreichbar</h2>
+        <ul class="contact-list">
+          <li>
+            <strong>📧 E-Mail</strong>
+            <span class="muted">kontakt@libertycountyrp.de</span>
+          </li>
+          <li>
+            <strong>💬 Discord</strong>
+            <span class="muted">https://discord.gg/R42wz6dYTb</span>
+          </li>
+          <li>
+            <strong>🧭 Community</strong>
+            <span class="muted">Realistisches RP, Fragen & gemeinsame Zukunft.</span>
+          </li>
+        </ul>
+      </aside>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="muted">© Liberty County RP – ERLC Community. | <a href="index.html" style="color:#8fd0ff;">Startseite</a> • <a href="gallery.html" style="color:#8fd0ff;">Galerie</a> • <a href="contact.html" style="color:#8fd0ff;">Kontakt</a></div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const form = event.currentTarget;
+      const name = form.querySelector('#name').value.trim();
+      const email = form.querySelector('#email').value.trim();
+      const subject = form.querySelector('#subject').value.trim();
+      const message = form.querySelector('#message').value.trim();
+
+      const body = [
+        'Name: ' + name,
+        'E-Mail: ' + email,
+        '',
+        'Nachricht:',
+        message
+      ].join('\n');
+
+      const mailto = 'mailto:kontakt@libertycountyrp.de?subject=' + encodeURIComponent(subject || 'Kontaktanfrage') + '&body=' + encodeURIComponent(body);
+      window.location.href = mailto;
+    });
+  </script>
+</body>
+</html>
