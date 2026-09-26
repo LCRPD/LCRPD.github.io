@@ -306,7 +306,12 @@
     <section class="content-grid">
       <div class="card">
         <h2>Kontaktformular</h2>
-        <form id="contactForm" class="form-grid">
+        <form id="contactForm" class="form-grid" action="https://formsubmit.co/libertycountyrpstaff@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Neue Kontaktanfrage von Liberty County RP" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://lcrpd.github.io/contact.html?success=1" />
+
           <div>
             <label for="name">Name</label>
             <input id="name" name="name" type="text" placeholder="Dein Name" required />
@@ -370,46 +375,32 @@
       statusBox.classList.toggle('error', isError);
     }
 
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
+    if (new URLSearchParams(window.location.search).get('success') === '1') {
+      showStatus('Deine Nachricht wurde erfolgreich gesendet. Wir melden uns bald bei dir.', false);
+    }
 
+    form.addEventListener('submit', function (event) {
       const name = form.querySelector('#name').value.trim();
       const email = form.querySelector('#email').value.trim();
       const subject = form.querySelector('#subject').value.trim();
       const message = form.querySelector('#message').value.trim();
 
       if (!name || !email || !subject || !message) {
+        event.preventDefault();
         showStatus('Bitte fülle alle Felder aus, bevor du sendest.', true);
         return;
       }
 
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailPattern.test(email)) {
+        event.preventDefault();
         showStatus('Bitte gib eine gültige E-Mail-Adresse ein.', true);
         return;
       }
 
-      const body = [
-        'Name: ' + name,
-        'E-Mail: ' + email,
-        '',
-        'Nachricht:',
-        message
-      ].join('\n');
-
-      const mailto = 'mailto:libertycountyrpstaff@gmail.com?subject=' + encodeURIComponent('Kontaktanfrage: ' + subject) + '&body=' + encodeURIComponent(body);
-
       submitButton.disabled = true;
-      submitButton.textContent = 'Öffnet E-Mail...';
-      showStatus('Dein E-Mail-Programm wird geöffnet. Bitte sende die vorbereitete Nachricht ab.', false);
-
-      window.location.href = mailto;
-
-      setTimeout(() => {
-        form.reset();
-        submitButton.disabled = false;
-        submitButton.textContent = 'Nachricht senden';
-      }, 1200);
+      submitButton.textContent = 'Wird gesendet...';
+      showStatus('Deine Nachricht wird gesendet. Bitte warten...', false);
     });
   </script>
 </body>
